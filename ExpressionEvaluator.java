@@ -1,11 +1,10 @@
 
-
+import java.util.Arrays;
 public class ExpressionEvaluator {
     public static boolean evaluateExpression(String expression, String[] variables, boolean[] values) {
         for (int i = 0; i < 2; i++) {
             expression = expression.replace(variables[i], String.valueOf(values[i]));
         }
-        
         // Reemplazar conectores lógicos por operadores Java
         expression = expression.replace("*", "||") // Disyunción
                             .replace("/", "&&") // Conjunción
@@ -25,6 +24,7 @@ public class ExpressionEvaluator {
     private static boolean eval(String expression) throws Exception {
         if (expression.contains("||")) {
             String[] parts = expression.split("\\|\\|");
+            
             return eval(parts[0].trim()) || eval(parts[1].trim()); // Disyunción
         }
         if (expression.contains("&&")) { 

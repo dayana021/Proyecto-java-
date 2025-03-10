@@ -73,7 +73,6 @@ public class Main {
                     }
                 }
                 List<String> listaVariables = Arrays.asList(variables); 
-                System.out.println(listaVariables);
                 for (String expression : expressions) {
                     for (String expression_ : expression.split("")) {
                         String grupo = "/*=!"; // Grupo de caracteres permitidos

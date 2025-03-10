@@ -4,6 +4,7 @@ import java.util.List;
 
 public class TruthTable {
     public static void printTruthTable(String[] variables, String[] expressions) {
+
         List<boolean[]> truthTable = generateTruthTable(variables.length);
         List<String> headers = new ArrayList<>(Arrays.asList(variables));
         headers.addAll(Arrays.asList(expressions));
@@ -19,7 +20,9 @@ public class TruthTable {
             for (String expr : expressions) {
                 boolean result = ExpressionEvaluator.evaluateExpression(expr, variables, values);
                 row.add(result ? "1" : "0");
+                System.err.println(result);
             }
+            System.err.println(row);
             System.out.println(String.join(" | ", row));
         }
     }
@@ -27,7 +30,7 @@ public class TruthTable {
     private static List<boolean[]> generateTruthTable(int numVariables) {
         List<boolean[]> table = new ArrayList<>();
         int numRows = (int) Math.pow(2, numVariables);
-        
+    
         for (int i = 0; i < numRows; i++) {
             boolean[] row = new boolean[numVariables];
             for (int j = 0; j < numVariables; j++) {
